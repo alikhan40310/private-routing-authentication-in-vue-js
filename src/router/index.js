@@ -7,6 +7,23 @@ import Dashboard from "../views/Dashboard.vue";
 
 
 
+// creating Guard for guest
+function guest(to, from, next) {
+  if (localStorage.getItem('user')) {
+    next({ name: 'Dashboard' });
+  } else {
+    next();
+  }
+}
+// creating Guard for auth
+function guard(to, from, next) {
+  if (!localStorage.getItem('user')) {
+    next();
+  } else {
+    next({ name: 'Login' });
+  }
+}
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -14,25 +31,25 @@ const router = createRouter({
       path: "/",
       name: "Home",
       component: Home,
-      // beforeEnter: guest,
+      beforeEnter: guest,
     },
     {
       path: "/dashboard",
       name: "Dashboard",
       component: Dashboard,
-      // beforeEnter: guard,
+      beforeEnter: guard,
     },
     {
       path: "/register",
       name: "Register",
       component: Register,
-      // beforeEnter: guest,
+      beforeEnter: guest,
     },
     {
       path: "/login",
       name: "Login",
       component: Login,
-      // beforeEnter: guest,
+      beforeEnter: guest,
     },
   ]
 })
