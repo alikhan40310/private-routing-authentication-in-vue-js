@@ -87,6 +87,13 @@ export default {
       emailValidate: "",
       passwordValidate: "",
       confirmPasswordValidate: "",
+      users: [],
+      user: {
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+      },
     };
   },
   methods: {
@@ -124,6 +131,23 @@ export default {
       } else {
         this.confirmPasswordValidate = "";
       }
+      this.user = {username: this.username, email: this.email, password: this.password, confirmPassword: this.confirmPassword};
+
+      // push data in array
+      this.users.push(this.user);
+      // clear form
+
+      //   save data in local storage
+
+      localStorage.setItem("users", JSON.stringify(this.users));
+      console.log(this.user);
+
+      // save data in local storage
+      //   localStorage.setItem("username", JSON.stringify(this.username));
+      //   localStorage.setItem("email", JSON.stringify(this.email));
+      //   localStorage.setItem("password", JSON.stringify(this.password));
+      // redirect to login page
+      //   this.$router.push("/login");
     },
   },
 };
