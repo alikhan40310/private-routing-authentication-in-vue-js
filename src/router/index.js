@@ -21,6 +21,7 @@ function guard(to, from, next) {
     next();
   } else {
     next({ name: 'Login' });
+    alert("You are not logged in");
   }
 }
 
