@@ -4,9 +4,9 @@
       <div class="newstyle">
         <div class="row justify-content-center">
           <div class="col-sm-12 col-md-8 col-lg-6">
-            <div class="card">
+            <div class="card ">
               <div class="card-header">
-                <div class="card-title">Login User</div>
+                <div class="card-title text-primary fs-6">Login User</div>
               </div>
               <div class="card-body">
                 <form
