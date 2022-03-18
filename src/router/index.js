@@ -9,7 +9,7 @@ import Dashboard from "../views/Dashboard.vue";
 
 // creating Guard for guest
 function guest(to, from, next) {
-  if (localStorage.getItem('user')) {
+  if (localStorage.getItem('users')) {
     next({ name: 'Dashboard' });
   } else {
     next();
@@ -17,7 +17,7 @@ function guest(to, from, next) {
 }
 // creating Guard for auth
 function guard(to, from, next) {
-  if (!localStorage.getItem('user')) {
+  if (localStorage.getItem('users')) {
     next();
   } else {
     next({ name: 'Login' });

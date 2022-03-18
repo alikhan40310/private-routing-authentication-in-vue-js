@@ -49,7 +49,7 @@
                       {{ passwordValidate }}
                     </div>
                   </div>
-                  <button class="btn btn-outline-success form-control">
+                  <button class="btn btn-outline-primary form-control">
                     Login
                   </button>
                 </form>
@@ -129,7 +129,7 @@ export default {
       this.password = "";
       //  redirect to login page
       this.$router.push("/dashboard");
-    //   window.location.reload();
+      window.location.reload();
     },
   },
 };

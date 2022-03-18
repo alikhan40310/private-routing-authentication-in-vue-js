@@ -20,15 +20,11 @@
           <li class="nav-item active" v-if="!IsLogin">
             <router-link class="nav-link" to="/Login">Login</router-link>
           </li>
-          <!-- <li class="nav-item" v-if="!user">
-            <router-link class="nav-link" to="/Login">Dashboa</router-link>
-          </li> -->
-          <li class="nav-item" v-if="IsLogin">
+          <li class="nav-item" v-else>
             <a class="nav-link" href="" @click.prevent="logOut">Log out</a>
           </li>
         </ul>
       </div>
-      <!-- <button class="btn btn-primary " @click="checkResult">click</button> -->
     </div>
   </nav>
 </template>
@@ -38,27 +34,22 @@ export default {
   name: "Navbar",
   data() {
     return {
-      IsLogin: JSON.parse(localStorage.getItem("user")) || false ,
-        
+      IsLogin: "",
     };
   },
   methods: {
     logOut() {
-        // delete item from local storage
-
-      localStorage.removeItem("user");
-        this.IsLogin = null;
+      // delete item from local storage
+      localStorage.removeItem("users");
+      this.IsLogin = null;
       this.$router.push("/login");
-        // window.location.reload();
-    },
-    checkResult() {
-      console.log(this.IsLogin);
+      window.location.reload();
     },
   },
   mounted() {
-    // if local storage has active user
-    if (localStorage.getItem("user")) {
-      this.IsLogin = JSON.parse(localStorage.getItem("user"));
+    if (localStorage.getItem("users")) {
+      let activeUser = localStorage.getItem("users");
+      this.IsLogin = JSON.parse(activeUser);
     }
   },
 };
